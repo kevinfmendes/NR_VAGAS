@@ -1,0 +1,8 @@
+{
+    "name":"kevin-dev/nr_vagas",
+    "autoload": {
+        "psr-4": {
+            "App\\":"app/"
+        }
+    }
+}
