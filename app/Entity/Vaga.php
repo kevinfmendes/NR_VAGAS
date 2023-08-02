@@ -1,5 +1,7 @@
 <?php
+    
     namespace App\Entity;
+    use \App\Db\Database;
 
     class Vaga
 {
@@ -38,11 +40,17 @@
         $this->data = date('Y-m-d H:i:s');
 
         //inserir no bd
-
+        $obDatabase = new Database('vagas');
+        $obDatabase->insert([
+            'titulo' =>$this->titulo,
+            'descricao' =>$this->descricao,
+            'ativo' =>$this->ativo,
+            'data' =>$this->data
+        ]);
+        //echo "<pre>"; print_r($obDatabase); echo "</pre>";
         //atribuir id
 
         //return success
-
 
 
     }
