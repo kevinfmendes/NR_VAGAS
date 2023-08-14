@@ -90,5 +90,43 @@
              */
             $query = 'INSERT INTO '.$this->table.' ('.implode(',',$fields).') VALUES ('.implode(',',$binds).') ';
 
+            $this->execute($query, array_values($valores));
+
+            return $this->connection->lastInsertId();
+
+        }
+
+        /**
+         * metodo para realizar update no db
+         * recebe array field => values
+         */
+        public function update($where, $valores){
+            
+            $fields = array_keys($valores);
+
+            $query = 'UPDATE '.$this->table. ' SET '.implode('=?,',$fields).'=? WHERE '.$where;
+
+            $this->execute($query, array_values($valores));
+
+            return true;
+
+        }
+
+        /** Executa consulta no db
+            * @param string $where
+            * @param string $order
+            * @param string $limit
+            * @return PDOStatement
+         */
+
+        public function select ($where = null, $order = null, $limit = null, $fields = '*')  {
+             
+            $where = strlen($where) ? 'WHERE '.$where : '';
+            $order = strlen($order) ? 'ORDER BY '.$order : '';
+            $limit = strlen($limit) ? 'LIMIT '.$limit : '';
+
+            $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$where.' '.$order.' '.$limit;
+
+            return $this->execute($query);
         }
     }
