@@ -60,6 +60,13 @@
             'data' =>$this->data
         ]);
     }
+    /** Método responsável por excluir a vaga do banco
+     * @return boolean
+     * 
+     */
+    public function excluir(){
+        return (new Database('vagas')) -> delete('id= ' .$this->id);
+    }
 
     /** Método que vai buscar no db as vagas e listar 
      * @param string $where

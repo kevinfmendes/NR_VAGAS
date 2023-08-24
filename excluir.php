@@ -21,23 +21,18 @@
     }
 
     //manipulando info do form via post e jogando dentro do objeto
-    if (isset($_POST['titulo'],$_POST['descricao'],$_POST['ativo'])){
+    if (isset($_POST['excluir'])){
 
-        
-        $obVaga->titulo = $_POST['titulo'];
-        $obVaga->descricao = $_POST['descricao'];
-        $obVaga-> ativo = $_POST['ativo'];
-
-        $obVaga->atualizar();
+        $obVaga->excluir();
         
         header('location: index.php?status=success');
         exit;
         
     }
 
-    // este trehco de código p/ 'debugar' kk //echo "<pre>"; print_r($_POST); echo "</pre>"; exit;
+    //echo "<pre>"; print_r($_POST); echo "</pre>"; exit;
 
     //incluindo conteudo
     include __DIR__.'/includes/header.php' ;
-    include __DIR__.'/includes/form.php' ;
+    include __DIR__.'/includes/confirmar-exclusao.php' ;
     include __DIR__.'/includes/footer.php' ;

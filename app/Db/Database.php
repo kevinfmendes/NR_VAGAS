@@ -129,4 +129,19 @@
 
             return $this->execute($query);
         }
+
+        /**
+         * @param string $where
+         * @return boolean
+         */
+        public function delete ($where) {
+            //montando query delete
+            $query = 'DELETE FROM ' .$this->table.'  WHERE ' .$where;
+
+            //executa
+            $this->execute($query);
+
+            return true;
+
+        }
     }
